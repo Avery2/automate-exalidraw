@@ -29,7 +29,9 @@ def select_rectangle_tool():
     click_with_log("[click] rectangle button", 531,129)
 
 def select_text_tool():
-    click_with_log("[click] text button", 786,142)
+    # click_with_log("[click] text button", 786,142)
+    pyautogui.press('escape')
+    pyautogui.press('8')
 
 def exalidraw_make_text(x, y, text=''):
     select_text_tool()
@@ -50,9 +52,49 @@ def exalidraw_rect_with_text(x, y, h=DEFAULT_RECT_HEIGHT, w=DEFTAULT_RECT_WIDTH,
 select_exalidraw_app()
 exalidraw_reset_zoom()
 
-for i in range (3):
-    i += 1
-    print(f"{i=}")
-    x = 200 + 200 * i
-    y = 200 + 200 * i
-    exalidraw_rect_with_text(x, y, text='hello world')
+text_raw = """Table.tsx: canSelectMore
+Table.tsx: className
+Table.tsx: clearSort
+Table.tsx: columnFunctions
+Table.tsx: controlsRight
+Table.tsx: definitionId
+Table.tsx: deselectAllSeries
+Table.tsx: disableSelection
+Table.tsx: disableSorting
+Table.tsx: displayWithMinimalChrome
+Table.tsx: fixedColumnCount
+Table.tsx: fixedHeaderLabelTransform,
+Table.tsx: fixedRowCount
+Table.tsx: getColumnFunctionCell
+Table.tsx: getRowFunctionCell
+Table.tsx: isUserSelected
+Table.tsx: locales
+Table.tsx: maxHeight
+Table.tsx: rowFunctions
+Table.tsx: rowHeight
+Table.tsx: rows
+Table.tsx: shouldShowSeriesBadges
+Table.tsx: style
+Table.tsx: selectAllSeries
+Table.tsx: sortByColumn
+Table.tsx: sortedBy
+Table.tsx: toggleSegmentSelected
+Table.tsx: vis
+Table.tsx: width"""
+text_arr = text_raw.split("\n")
+# print(text_arr)
+def exalidraw_create_many_text_from_arr(text_arr):
+    start = (315, 220)
+    TEXT_HEIGHT = 25
+    for i, text in enumerate(text_arr):
+        x, y = start
+        y += i*TEXT_HEIGHT
+        exalidraw_make_text(x, y, text=text)
+
+exalidraw_create_many_text_from_arr(text_arr)
+# for i in range (3):
+#     i += 1
+#     print(f"{i=}")
+#     x = 200 + 200 * i
+#     y = 200 + 200 * i
+#     exalidraw_rect_with_text(x, y, text='hello world')
