@@ -16,11 +16,14 @@ def select_exalidraw_app():
     print("[aentierssumption] exalidraw is first pinned tab")
     click_with_log("pinned exalidraw tab", 113, 55)
 
-def exalidraw_make_rect(x, y, h=50, w=50):
+DEFAULT_RECT_HEIGHT = 50
+DEFTAULT_RECT_WIDTH = 50
+LEFT_PADDING = 10
+def exalidraw_make_rect(x, y, h=DEFAULT_RECT_HEIGHT, w=DEFTAULT_RECT_WIDTH):
     # select rectangle tool
     select_rectangle_tool()
     pyautogui.moveTo(x, y)
-    pyautogui.dragTo(x + h, y + w, button='left')
+    pyautogui.dragTo(x + w, y + h, button='left')
 
 def select_rectangle_tool():
     click_with_log("[click] rectangle button", 531,129)
@@ -28,7 +31,7 @@ def select_rectangle_tool():
 def select_text_tool():
     click_with_log("[click] text button", 786,142)
 
-def exalidraw_make_text(x, y, text):
+def exalidraw_make_text(x, y, text=''):
     select_text_tool()
     pyautogui.click(x,y)
     pyautogui.write(text)
@@ -36,12 +39,20 @@ def exalidraw_make_text(x, y, text):
 def exalidraw_reset_zoom():
     pyautogui.click(105, 1093)
 
+def exalidraw_rect_with_text(x, y, h=DEFAULT_RECT_HEIGHT, w=DEFTAULT_RECT_WIDTH, text=''):
+
+    w=max(len(text)*10.5+LEFT_PADDING, w)
+
+    exalidraw_make_rect(x, y, h, w)
+    y_ = y+(h/2)
+    exalidraw_make_text(x+LEFT_PADDING, y_, text)
+
 select_exalidraw_app()
 exalidraw_reset_zoom()
 
-exalidraw_make_rect(400, 400)
-exalidraw_make_text(400, 400, "hello world")
-exalidraw_make_rect(500, 500)
-exalidraw_make_text(500, 500, "hello world")
-exalidraw_make_rect(600, 600)
-exalidraw_make_text(600, 600, "hello world")
+for i in range (3):
+    i += 1
+    print(f"{i=}")
+    x = 200 + 200 * i
+    y = 200 + 200 * i
+    exalidraw_rect_with_text(x, y, text='hello world')
