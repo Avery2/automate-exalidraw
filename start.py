@@ -52,35 +52,10 @@ def exalidraw_rect_with_text(x, y, h=DEFAULT_RECT_HEIGHT, w=DEFTAULT_RECT_WIDTH,
 select_exalidraw_app()
 exalidraw_reset_zoom()
 
-text_raw = """Table.tsx: canSelectMore
-Table.tsx: className
-Table.tsx: clearSort
-Table.tsx: columnFunctions
-Table.tsx: controlsRight
-Table.tsx: definitionId
-Table.tsx: deselectAllSeries
-Table.tsx: disableSelection
-Table.tsx: disableSorting
-Table.tsx: displayWithMinimalChrome
-Table.tsx: fixedColumnCount
-Table.tsx: fixedHeaderLabelTransform,
-Table.tsx: fixedRowCount
-Table.tsx: getColumnFunctionCell
-Table.tsx: getRowFunctionCell
-Table.tsx: isUserSelected
-Table.tsx: locales
-Table.tsx: maxHeight
-Table.tsx: rowFunctions
-Table.tsx: rowHeight
-Table.tsx: rows
-Table.tsx: shouldShowSeriesBadges
-Table.tsx: style
-Table.tsx: selectAllSeries
-Table.tsx: sortByColumn
-Table.tsx: sortedBy
-Table.tsx: toggleSegmentSelected
-Table.tsx: vis
-Table.tsx: width"""
+text_raw = """text
+divided
+by
+newlines"""
 text_arr = text_raw.split("\n")
 # print(text_arr)
 def exalidraw_create_many_text_from_arr(text_arr):
